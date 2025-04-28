@@ -1,16 +1,21 @@
-from selenium import webdriver
+def before_all(context):
+    pass
+
+def after_all(context):
+    pass
+
+def before_feature(context, feature):
+    pass
+
+def after_feature(context, feature):
+    pass
 
 def before_scenario(context, scenario):
-    """
-    Esta función se ejecuta antes de cada escenario de prueba.
-    Inicializa el WebDriver y lo almacena en el contexto.
-    """
-    context.driver = webdriver.Chrome()  # o webdriver.Firefox()
-    context.driver.maximize_window()
+    pass
 
 def after_scenario(context, scenario):
-    """
-    Esta función se ejecuta después de cada escenario de prueba.
-    Cierra el navegador para limpiar después de cada prueba.
-    """
-    context.driver.quit()
+    if hasattr(context, 'driver'):
+        try:
+            context.driver.quit()
+        except:
+            pass
